@@ -43,7 +43,7 @@ public class search extends AppCompatActivity {
         // specify an adapter (see also next example)
         String str[]={"abc","def","ghi"};
         mAdapter = new MyAdapter(str);
-       mRecyclerView.setAdapter(mAdapter);
+     //  mRecyclerView.setAdapter(mAdapter);
 
 // Add the request to the RequestQueue.
     }
