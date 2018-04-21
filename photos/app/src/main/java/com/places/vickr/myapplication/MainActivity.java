@@ -30,10 +30,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
+    protected GeoDataClient mGeoDataClient;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -48,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
-    protected GeoDataClient mGeoDataClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,8 +79,17 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+
+
+
         mGeoDataClient = Places.getGeoDataClient(this, null);
         getPhotos("ChIJ7aVxnOTHwoARxKIntFtakKo");
+
+
+
+
+
     }
 
 
@@ -134,8 +144,8 @@ public class MainActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+          //  TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+           // textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }
     }
@@ -179,18 +189,33 @@ public class MainActivity extends AppCompatActivity {
                 // Get the PlacePhotoMetadataBuffer (metadata for all of the photos).
                 PlacePhotoMetadataBuffer photoMetadataBuffer = photos.getPhotoMetadata();
                 // Get the first photo in the list.
-                PlacePhotoMetadata photoMetadata = photoMetadataBuffer.get(0);
-                // Get the attribution text.
-                CharSequence attribution = photoMetadata.getAttributions();
-                // Get a full-size bitmap for the photo.
-                Task<PlacePhotoResponse> photoResponse = mGeoDataClient.getPhoto(photoMetadata);
-                photoResponse.addOnCompleteListener(new OnCompleteListener<PlacePhotoResponse>() {
-                    @Override
-                    public void onComplete(@NonNull Task<PlacePhotoResponse> task) {
-                        PlacePhotoResponse photo = task.getResult();
-                        Bitmap bitmap = photo.getBitmap();
-                    }
-                });
+                for(PlacePhotoMetadata photoMetadata : photoMetadataBuffer){
+                    Task<PlacePhotoResponse> photoResponse = mGeoDataClient.getPhoto(photoMetadata);
+
+                    photoResponse.addOnCompleteListener(new OnCompleteListener<PlacePhotoResponse>() {
+                        @Override
+                        public void onComplete(@NonNull Task<PlacePhotoResponse> task) {
+                            PlacePhotoResponse photo = task.getResult();
+                           Bitmap bitmap =photo.getBitmap();
+                            float aspectRatio = bitmap.getWidth() /
+                                    (float) bitmap.getHeight();
+                            int width = 1000;
+                            int height = Math.round(width / aspectRatio);
+
+
+                            bitmap = Bitmap.createScaledBitmap(
+                                    bitmap, width, height, false);
+                            LinearLayout linearLayout1 = (LinearLayout) findViewById(R.id.linearLayout1);
+                            ImageView image = new ImageView(MainActivity.this);
+                            image.setImageBitmap(bitmap);
+                            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                            lp.setMargins(45, 40, 45, 0);
+                            image.setLayoutParams(lp);
+                            linearLayout1.addView(image);
+
+                        }
+                    });
+                }
             }
         });
     }
