@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         mGeoDataClient = Places.getGeoDataClient(this, null);
+        //remove ']' at the end of place id to get photos
         getPhotos("ChIJ7aVxnOTHwoARxKIntFtakKo]");
 
 
