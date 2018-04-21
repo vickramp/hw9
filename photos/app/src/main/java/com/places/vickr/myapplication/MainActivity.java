@@ -24,6 +24,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,6 +34,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     protected GeoDataClient mGeoDataClient;
@@ -84,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         mGeoDataClient = Places.getGeoDataClient(this, null);
-        getPhotos("ChIJ7aVxnOTHwoARxKIntFtakKo");
+        getPhotos("ChIJ7aVxnOTHwoARxKIntFtakKo]");
 
 
 
@@ -189,7 +191,9 @@ public class MainActivity extends AppCompatActivity {
                 // Get the PlacePhotoMetadataBuffer (metadata for all of the photos).
                 PlacePhotoMetadataBuffer photoMetadataBuffer = photos.getPhotoMetadata();
                 // Get the first photo in the list.
+                boolean pics=true;
                 for(PlacePhotoMetadata photoMetadata : photoMetadataBuffer){
+                    pics=false;
                     Task<PlacePhotoResponse> photoResponse = mGeoDataClient.getPhoto(photoMetadata);
 
                     photoResponse.addOnCompleteListener(new OnCompleteListener<PlacePhotoResponse>() {
@@ -213,9 +217,21 @@ public class MainActivity extends AppCompatActivity {
                             image.setLayoutParams(lp);
                             linearLayout1.addView(image);
 
+
                         }
                     });
                 }
+                if(pics){
+                    TextView textView = new TextView(MainActivity.this);
+                    textView.setTextSize(15);
+                    textView.setText("No Photos");
+                    textView.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    lp.setMargins(450, 600, 400, 1000);
+                    textView.setLayoutParams(lp);
+                    LinearLayout linearLayout1 = (LinearLayout) findViewById(R.id.linearLayout1);
+                    linearLayout1.addView(textView);
+                    }
             }
         });
     }
