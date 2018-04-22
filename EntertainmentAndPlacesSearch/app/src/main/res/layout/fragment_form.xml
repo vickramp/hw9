@@ -12,6 +12,7 @@
 
 <!-- TODO: Update blank fragment layout -->
 
+
 <TextView
     android:id="@+id/textView"
     android:layout_width="123dp"
@@ -151,5 +152,28 @@
             android:text="Clear" />
     </LinearLayout>
 
+<!--
+
+    <RelativeLayout
+        android:id="@+id/loadingPanel"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+
+        >
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            style="?android:attr/progress"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+
+            />
+
+    </RelativeLayout>
+-->
 
 </LinearLayout>
+

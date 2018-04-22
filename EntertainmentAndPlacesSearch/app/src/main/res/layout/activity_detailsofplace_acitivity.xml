@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/newcontent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".detailsofplaceAcitivity">
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/appbar_padding_top"
+        android:theme="@style/AppTheme.AppBarOverlay">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="300dp"
+                android:layout_height="?attr/actionBarSize"
+
+                android:background="?attr/colorPrimary"
+                app:title="ASJDKFJASKDHFKJHASDKJFHJAKSHDFKLASDHFKJHASDJKF">
+            </android.support.v7.widget.Toolbar>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="right"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:layout_marginRight="10dp">
+
+                    <ImageView
+                        android:id="@+id/Favtwittericon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="right"
+                        android:background="@drawable/share"
+
+                        />
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="6dp"
+                        android:id="@+id/placeFavicon"
+                        android:background="#0000"
+                        android:clickable="false"
+                        android:src="@drawable/favoutlinewhite" />
+                </LinearLayout>
+        </LinearLayout>
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tabdetailsItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout="@layout/infotab" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tabdetailsItem2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:layout ="@layout/photostab" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tabdetailsItem3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout="@layout/maptab" />
+            <android.support.design.widget.TabItem
+                android:id="@+id/tabdetailsItem4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout="@layout/reviewstab" />
+
+        </android.support.design.widget.TabLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</android.support.design.widget.CoordinatorLayout>

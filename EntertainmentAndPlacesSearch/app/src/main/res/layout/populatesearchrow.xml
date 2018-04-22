@@ -9,6 +9,7 @@
 <ImageView
     android:layout_width="50dp"
     android:layout_height="60dp"
+    android:id="@+id/imgsrcicon"
     android:src="@drawable/school71" />
     <LinearLayout android:layout_width="280dp"
         android:layout_height="wrap_content"
@@ -41,6 +42,7 @@
         android:layout_height="60dp"
         android:layout_gravity="center"
         android:layout_marginLeft="6dp"
+        android:id="@+id/imgfavicon"
         android:background="#0000"
         android:clickable="false"
         android:src="@drawable/favouritesoutlineblack" />

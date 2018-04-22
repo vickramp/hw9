@@ -20,6 +20,19 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -130,11 +143,9 @@ public class FormFragment extends Fragment {
                 }
 
                 System.out.println("Clicked Search Button" + val  +  "id "+ keyword + " " + category + " "+distance + " " + customloc);
-
+                //getDetails();
                 if(!checkForErrors(keyword,customloc,val)) {
-                    Intent i = new Intent();
-                    i.setClass(getActivity().getApplicationContext(), displayresultsAcitivity.class);
-                    startActivity(i);
+                    getDetails();
                 }
 
             }
@@ -152,15 +163,15 @@ public class FormFragment extends Fragment {
                                     getItemAtPosition(i)).getPlaceText()
                             , Toast.LENGTH_SHORT).show();
                     //do something with the selection
-                    searchScreen();
+                  //  searchScreen();
                 }
             };
-    public void searchScreen(){
+  /*  public void searchScreen(){
         Intent i = new Intent();
         i.setClass(getActivity().getApplicationContext(), MainActivity.class);
         startActivity(i);
     }
-
+*/
     public boolean checkForErrors(String kword,String lcldis,int val)
     {
         String nstring = kword.trim();
@@ -236,4 +247,36 @@ public class FormFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    public void getDetails()
+    {
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
+
+        String url ="http://chennavamshi-env.us-east-2.elasticbeanstalk.com/nearbySearch?keyword=usc&lat=34.0266&long=-118.2831&category=default&distance=16094.300000000001";
+        System.out.println("Sending Request");
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        // mTextView.setText("Response is: "+ response.substring(0,500));
+                        System.out.println(response);
+                        Intent i = new Intent();
+                        i.setClass(getActivity().getApplicationContext(), displayresultsAcitivity.class);
+                        i.putExtra("EXTRA_SESSION_ID", response);
+                        startActivity(i);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println("Eroor " + error);
+                // mTextView.setText("That didn't work!");
+            }
+        });
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
+
+    }
+
 }
