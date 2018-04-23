@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     return;
                 }
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    if(pid==null||pid.length()==0)
+                        if(pid==null||pid.length()==0)
                         return;
                     getDir(pid, sp.getSelectedItem().toString());
                 }
@@ -224,14 +224,18 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            if(response.equals("[]"))
+                            if(response.equals("[]")) {
+                                Toast.makeText(context, "No Directions Found From Given Location",
+                                        Toast.LENGTH_LONG).show();
                                 return;
-                            String tmp=response;
+                            }
                             Gson gson = new Gson();
                             data []dt = gson.fromJson(response, data[].class);
 
                             LatLng loc = new LatLng(dt[dt.length-1].end_location.lat,dt[dt.length-1].end_location.lng);
                             MainActivity.gmap.addMarker(new MarkerOptions().position(loc));
+                            MainActivity.gmap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 14));
+
                             for(int i=0;i<dt.length;i++) {
                                 MainActivity.gmap.addPolyline(new PolylineOptions()
                                         .add(new LatLng(dt[i].start_location.lat, dt[i].start_location.lng), new LatLng(dt[i].end_location.lat, dt[i].end_location.lng))
@@ -241,6 +245,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
+
+                    VolleyError err=error;
+
                     //error
                 }
             });

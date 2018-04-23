@@ -1,43 +1,26 @@
-package com.places.vickr.myapplication;
+package com.places.vickr.maps2;
 
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import com.google.android.gms.location.places.GeoDataClient;
-import com.google.android.gms.location.places.PlacePhotoMetadata;
-import com.google.android.gms.location.places.PlacePhotoMetadataBuffer;
-import com.google.android.gms.location.places.PlacePhotoMetadataResponse;
-import com.google.android.gms.location.places.PlacePhotoResponse;
-import com.google.android.gms.location.places.Places;
-import com.google.android.gms.location.places.PlaceDetectionClient;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    protected GeoDataClient mGeoDataClient;
+
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -81,17 +64,6 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
-
-
-
-        mGeoDataClient = Places.getGeoDataClient(this, null);
-        //remove ']' at the end of place id to get photos
-        getPhotos("ChIJ7aVxnOTHwoARxKIntFtakKo");
-
-
-
-
 
     }
 
@@ -147,8 +119,8 @@ public class MainActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-          //  TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-           // textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            //TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }
     }
@@ -176,66 +148,4 @@ public class MainActivity extends AppCompatActivity {
             return 3;
         }
     }
-
-
-
-
-
-    private void getPhotos(String placeid) {
-        final String placeId = placeid;
-        final Task<PlacePhotoMetadataResponse> photoMetadataResponse = mGeoDataClient.getPlacePhotos(placeId);
-        photoMetadataResponse.addOnCompleteListener(new OnCompleteListener<PlacePhotoMetadataResponse>() {
-            @Override
-            public void onComplete(@NonNull Task<PlacePhotoMetadataResponse> task) {
-                // Get the list of photos.
-                PlacePhotoMetadataResponse photos = task.getResult();
-                // Get the PlacePhotoMetadataBuffer (metadata for all of the photos).
-                PlacePhotoMetadataBuffer photoMetadataBuffer = photos.getPhotoMetadata();
-                // Get the first photo in the list.
-                boolean pics=true;
-                for(PlacePhotoMetadata photoMetadata : photoMetadataBuffer){
-                    pics=false;
-                    Task<PlacePhotoResponse> photoResponse = mGeoDataClient.getPhoto(photoMetadata);
-
-                    photoResponse.addOnCompleteListener(new OnCompleteListener<PlacePhotoResponse>() {
-                        @Override
-                        public void onComplete(@NonNull Task<PlacePhotoResponse> task) {
-                            PlacePhotoResponse photo = task.getResult();
-                           Bitmap bitmap =photo.getBitmap();
-                            float aspectRatio = bitmap.getWidth() /
-                                    (float) bitmap.getHeight();
-                            int width = 1000;
-                            int height = Math.round(width / aspectRatio);
-                            bitmap = Bitmap.createScaledBitmap(
-                                    bitmap, width, height, false);
-                            LinearLayout linearLayout1 = (LinearLayout) findViewById(R.id.linearLayout1);
-                            ImageView image = new ImageView(MainActivity.this);
-                            image.setImageBitmap(bitmap);
-                            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                            lp.setMargins(45, 40, 45, 0);
-                            image.setLayoutParams(lp);
-                            linearLayout1.addView(image);
-                        }
-                    });
-                }
-                if(pics){
-                    TextView textView = new TextView(MainActivity.this);
-                    textView.setTextSize(15);
-                    textView.setText("No Photos");
-                    textView.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
-                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                    lp.setMargins(450, 600, 400, 1000);
-                    textView.setLayoutParams(lp);
-                    LinearLayout linearLayout1 = (LinearLayout) findViewById(R.id.linearLayout1);
-                    linearLayout1.addView(textView);
-                    }
-            }
-        });
-    }
-
-
-
-
-
-
 }
