@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
         mGeoDataClient = Places.getGeoDataClient(this, null);
         //remove ']' at the end of place id to get photos
-        getPhotos("ChIJ7aVxnOTHwoARxKIntFtakKo]");
+        getPhotos("ChIJ7aVxnOTHwoARxKIntFtakKo");
 
 
 
@@ -206,8 +206,6 @@ public class MainActivity extends AppCompatActivity {
                                     (float) bitmap.getHeight();
                             int width = 1000;
                             int height = Math.round(width / aspectRatio);
-
-
                             bitmap = Bitmap.createScaledBitmap(
                                     bitmap, width, height, false);
                             LinearLayout linearLayout1 = (LinearLayout) findViewById(R.id.linearLayout1);
