@@ -1,0 +1,216 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:2:1-29:12
+MERGED from [com.android.support:design:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\78c5405f301e872d5caa2ac4ebbf0ee8\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\5a430eb8a7a4ed2a82b17e2f7d6b46e3\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\e14c16faffef3296293ceddf5670f242\AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.android.gms:play-services-nearby:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-nearby-15.0.0.aar\903fedfad532cf2963c8a3a1ec9bd4f6\AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.android.gms:play-services-places:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-places-15.0.0.aar\322f7729945f117f630807f093037ee3\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-maps:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.0.aar\34cfe7c5cd8eb63608cdb2271372ebd0\AndroidManifest.xml:17:1-32:12
+MERGED from [com.google.android.gms:play-services-location:11.8.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-location-11.8.0.aar\c3e82a187527fc97e6305d667ee3ce80\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-drive:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-drive-15.0.0.aar\81937b4f80bf5515dcbfccaf0fbd662c\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-places-placereport:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-15.0.0.aar\525cf8a698bf5797118a5c2333dcd4ff\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-base:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.0.aar\4627167f251fe3c964e45570775bb236\AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-tasks:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-tasks-15.0.0.aar\57d2d9cf892bcd1d2af44c733464a0e2\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-basement:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.0.aar\c5159aecc2cb51bb219cbc8cf7ec0d94\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\7c80cc3565c76084269431c17b99a5ad\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\945ae8e20d65924e0b6b5ccd136731ce\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\072ffa04e78d5a1512ac7464ccc2f615\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\3b4f66f47903f6185486e46bad4cfe3d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\b5db4702bc82ea101190e007f1adc023\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\d8b5595ee6418f2d6979015d9ee64551\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\b6027630a36ea60a67f04438d1e1f149\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\0f8df2b4a5097255b645786afc3b59b2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\2aa294cfbdd7ee1d455285f771641482\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\26b7b484ba23f327d4b1fa3503bf2397\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-location-license:11.8.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-location-license-11.8.0.aar\f73acb4c8136ab41f1124c8c56c45c5f\AndroidManifest.xml:2:1-6:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\bd7be9f026c69d7798646f8287b4f7fe\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\4b2e7fb407de97ac9d945d536a706b0f\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\b2caa5450e8676fba85259d4ba12b1de\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\de40a42e3809575d26e7e5d867b08bfd\AndroidManifest.xml:17:1-22:12
+INJECTED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:2:1-29:12
+	package
+		ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:3:5-43
+		INJECTED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:2:1-29:12
+		INJECTED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:2:1-29:12
+		INJECTED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:5:5-81
+	android:name
+		ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:5:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:6:5-79
+	android:name
+		ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:6:22-76
+meta-data#com.google.android.geo.API_KEY
+ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:8:5-10:67
+	android:value
+		ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:10:9-64
+	android:name
+		ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:9:9-54
+application
+ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:12:5-27:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\e14c16faffef3296293ceddf5670f242\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\e14c16faffef3296293ceddf5670f242\AndroidManifest.xml:9:5-20
+MERGED from [com.google.android.gms:play-services-nearby:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-nearby-15.0.0.aar\903fedfad532cf2963c8a3a1ec9bd4f6\AndroidManifest.xml:9:5-20
+MERGED from [com.google.android.gms:play-services-nearby:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-nearby-15.0.0.aar\903fedfad532cf2963c8a3a1ec9bd4f6\AndroidManifest.xml:9:5-20
+MERGED from [com.google.android.gms:play-services-places:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-places-15.0.0.aar\322f7729945f117f630807f093037ee3\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-places-15.0.0.aar\322f7729945f117f630807f093037ee3\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-maps:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.0.aar\34cfe7c5cd8eb63608cdb2271372ebd0\AndroidManifest.xml:30:5-20
+MERGED from [com.google.android.gms:play-services-maps:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.0.aar\34cfe7c5cd8eb63608cdb2271372ebd0\AndroidManifest.xml:30:5-20
+MERGED from [com.google.android.gms:play-services-location:11.8.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-location-11.8.0.aar\c3e82a187527fc97e6305d667ee3ce80\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:11.8.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-location-11.8.0.aar\c3e82a187527fc97e6305d667ee3ce80\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-drive:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-drive-15.0.0.aar\81937b4f80bf5515dcbfccaf0fbd662c\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-drive:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-drive-15.0.0.aar\81937b4f80bf5515dcbfccaf0fbd662c\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-15.0.0.aar\525cf8a698bf5797118a5c2333dcd4ff\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-15.0.0.aar\525cf8a698bf5797118a5c2333dcd4ff\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-base:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.0.aar\4627167f251fe3c964e45570775bb236\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.0.aar\4627167f251fe3c964e45570775bb236\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-tasks:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-tasks-15.0.0.aar\57d2d9cf892bcd1d2af44c733464a0e2\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-tasks-15.0.0.aar\57d2d9cf892bcd1d2af44c733464a0e2\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-basement:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.0.aar\c5159aecc2cb51bb219cbc8cf7ec0d94\AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.0.aar\c5159aecc2cb51bb219cbc8cf7ec0d94\AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-location-license:11.8.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-location-license-11.8.0.aar\f73acb4c8136ab41f1124c8c56c45c5f\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-location-license:11.8.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-location-license-11.8.0.aar\f73acb4c8136ab41f1124c8c56c45c5f\AndroidManifest.xml:5:5-20
+	android:supportsRtl
+		ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:17:9-35
+	android:label
+		ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:15:9-38
+	android:roundIcon
+		ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:16:9-54
+	android:icon
+		ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:14:9-43
+	android:allowBackup
+		ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:13:9-35
+	android:theme
+		ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:18:9-40
+activity#com.places.vickr.placesearch.Home
+ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:19:9-25:20
+	android:name
+		ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:19:19-39
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:20:13-24:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:21:17-69
+	android:name
+		ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:21:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:23:17-77
+	android:name
+		ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:23:27-74
+activity#com.places.vickr.placesearch.Results
+ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:26:9-54
+	android:name
+		ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml:26:19-42
+uses-sdk
+INJECTED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:design:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\78c5405f301e872d5caa2ac4ebbf0ee8\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\78c5405f301e872d5caa2ac4ebbf0ee8\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\5a430eb8a7a4ed2a82b17e2f7d6b46e3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\5a430eb8a7a4ed2a82b17e2f7d6b46e3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\e14c16faffef3296293ceddf5670f242\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\e14c16faffef3296293ceddf5670f242\AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.android.gms:play-services-nearby:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-nearby-15.0.0.aar\903fedfad532cf2963c8a3a1ec9bd4f6\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-nearby:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-nearby-15.0.0.aar\903fedfad532cf2963c8a3a1ec9bd4f6\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-places:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-places-15.0.0.aar\322f7729945f117f630807f093037ee3\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-places-15.0.0.aar\322f7729945f117f630807f093037ee3\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.0.aar\34cfe7c5cd8eb63608cdb2271372ebd0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.0.aar\34cfe7c5cd8eb63608cdb2271372ebd0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-location:11.8.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-location-11.8.0.aar\c3e82a187527fc97e6305d667ee3ce80\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:11.8.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-location-11.8.0.aar\c3e82a187527fc97e6305d667ee3ce80\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-drive:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-drive-15.0.0.aar\81937b4f80bf5515dcbfccaf0fbd662c\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-drive:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-drive-15.0.0.aar\81937b4f80bf5515dcbfccaf0fbd662c\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-15.0.0.aar\525cf8a698bf5797118a5c2333dcd4ff\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-15.0.0.aar\525cf8a698bf5797118a5c2333dcd4ff\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.0.aar\4627167f251fe3c964e45570775bb236\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.0.aar\4627167f251fe3c964e45570775bb236\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-tasks-15.0.0.aar\57d2d9cf892bcd1d2af44c733464a0e2\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-tasks-15.0.0.aar\57d2d9cf892bcd1d2af44c733464a0e2\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-basement:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.0.aar\c5159aecc2cb51bb219cbc8cf7ec0d94\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.0.aar\c5159aecc2cb51bb219cbc8cf7ec0d94\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\7c80cc3565c76084269431c17b99a5ad\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\7c80cc3565c76084269431c17b99a5ad\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\945ae8e20d65924e0b6b5ccd136731ce\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\945ae8e20d65924e0b6b5ccd136731ce\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\072ffa04e78d5a1512ac7464ccc2f615\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\072ffa04e78d5a1512ac7464ccc2f615\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\3b4f66f47903f6185486e46bad4cfe3d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\3b4f66f47903f6185486e46bad4cfe3d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\b5db4702bc82ea101190e007f1adc023\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\b5db4702bc82ea101190e007f1adc023\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\d8b5595ee6418f2d6979015d9ee64551\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\d8b5595ee6418f2d6979015d9ee64551\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\b6027630a36ea60a67f04438d1e1f149\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\b6027630a36ea60a67f04438d1e1f149\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\0f8df2b4a5097255b645786afc3b59b2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\0f8df2b4a5097255b645786afc3b59b2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\2aa294cfbdd7ee1d455285f771641482\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\2aa294cfbdd7ee1d455285f771641482\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\26b7b484ba23f327d4b1fa3503bf2397\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\26b7b484ba23f327d4b1fa3503bf2397\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-location-license:11.8.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-location-license-11.8.0.aar\f73acb4c8136ab41f1124c8c56c45c5f\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-location-license:11.8.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-location-license-11.8.0.aar\f73acb4c8136ab41f1124c8c56c45c5f\AndroidManifest.xml:4:5-43
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\bd7be9f026c69d7798646f8287b4f7fe\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\bd7be9f026c69d7798646f8287b4f7fe\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\4b2e7fb407de97ac9d945d536a706b0f\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\4b2e7fb407de97ac9d945d536a706b0f\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\b2caa5450e8676fba85259d4ba12b1de\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\b2caa5450e8676fba85259d4ba12b1de\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\de40a42e3809575d26e7e5d867b08bfd\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\de40a42e3809575d26e7e5d867b08bfd\AndroidManifest.xml:20:5-44
+INJECTED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Vigi\Documents\GitHub\hw9\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.android.gms:play-services-nearby:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-nearby-15.0.0.aar\903fedfad532cf2963c8a3a1ec9bd4f6\AndroidManifest.xml:7:5-79
+MERGED from [com.google.android.gms:play-services-maps:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.0.aar\34cfe7c5cd8eb63608cdb2271372ebd0\AndroidManifest.xml:23:5-79
+MERGED from [com.google.android.gms:play-services-maps:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.0.aar\34cfe7c5cd8eb63608cdb2271372ebd0\AndroidManifest.xml:23:5-79
+	android:name
+		ADDED from [com.google.android.gms:play-services-nearby:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-nearby-15.0.0.aar\903fedfad532cf2963c8a3a1ec9bd4f6\AndroidManifest.xml:7:22-76
+uses-permission#android.permission.INTERNET
+ADDED from [com.google.android.gms:play-services-maps:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.0.aar\34cfe7c5cd8eb63608cdb2271372ebd0\AndroidManifest.xml:24:5-67
+	android:name
+		ADDED from [com.google.android.gms:play-services-maps:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.0.aar\34cfe7c5cd8eb63608cdb2271372ebd0\AndroidManifest.xml:24:22-64
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.0.aar\34cfe7c5cd8eb63608cdb2271372ebd0\AndroidManifest.xml:26:5-28:35
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.0.aar\34cfe7c5cd8eb63608cdb2271372ebd0\AndroidManifest.xml:27:9-41
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.0.aar\34cfe7c5cd8eb63608cdb2271372ebd0\AndroidManifest.xml:28:9-32
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.0.aar\4627167f251fe3c964e45570775bb236\AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.0.aar\4627167f251fe3c964e45570775bb236\AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.0.aar\4627167f251fe3c964e45570775bb236\AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.0.aar\4627167f251fe3c964e45570775bb236\AndroidManifest.xml:24:13-79
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.0.aar\c5159aecc2cb51bb219cbc8cf7ec0d94\AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.0.aar\c5159aecc2cb51bb219cbc8cf7ec0d94\AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:15.0.0] C:\Users\Vigi\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.0.aar\c5159aecc2cb51bb219cbc8cf7ec0d94\AndroidManifest.xml:24:13-58
