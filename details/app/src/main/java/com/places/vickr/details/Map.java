@@ -166,7 +166,7 @@ public class Map extends Fragment implements OnMapReadyCallback {
                         Gson gson = new Gson();
                         data []dt = gson.fromJson(response, data[].class);
 
-                        LatLng loc = new LatLng(dt[dt.length-1].end_location.lat,dt[dt.length-1].end_location.lng);
+                        LatLng loc = new LatLng(dt[0].start_location.lat,dt[0].start_location.lng);
                         gmap.addMarker(new MarkerOptions().position(loc).title(dn));
                         gmap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 13));
 
