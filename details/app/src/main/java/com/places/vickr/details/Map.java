@@ -166,10 +166,13 @@ public class Map extends Fragment implements OnMapReadyCallback {
                         }
                         Gson gson = new Gson();
                         data []dt = gson.fromJson(response, data[].class);
+                        gmap.clear();
+                        LatLng loc1 = new LatLng(dt[dt.length-1].end_location.lat,dt[dt.length-1].end_location.lng);
+                        gmap.addMarker(new MarkerOptions().position(loc1).title(sn));
 
                         LatLng loc = new LatLng(dt[0].start_location.lat,dt[0].start_location.lng);
                         gmap.addMarker(new MarkerOptions().position(loc).title(dn));
-                        gmap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 13));
+                        gmap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 14));
 
                         for(int i=0;i<dt.length;i++) {
                             gmap.addPolyline(new PolylineOptions()
