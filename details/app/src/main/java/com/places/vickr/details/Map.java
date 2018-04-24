@@ -87,9 +87,10 @@ public class Map extends Fragment implements OnMapReadyCallback {
 
         ob=this;
         //get lat lng and placeid from object
-        lat=-33.852;
-        lng=151.211;
-        did="ChIJ7aVxnOTHwoARxKIntFtakKo";
+        lat=34.0224;
+        lng=118.2851;
+
+                did="ChIJ7aVxnOTHwoARxKIntFtakKo";
         sn="university of southern California";
 
     }
