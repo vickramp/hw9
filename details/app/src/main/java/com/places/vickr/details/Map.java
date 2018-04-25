@@ -1,9 +1,11 @@
 package com.places.vickr.details;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +45,7 @@ public class Map extends Fragment implements OnMapReadyCallback {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private  ProgressDialog progressBar;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -132,6 +134,14 @@ public class Map extends Fragment implements OnMapReadyCallback {
                 }
             };
     private  void getDir(String pid,String type){
+        progressBar = new ProgressDialog(getContext());
+        progressBar.setCancelable(true);
+        progressBar.setMessage("Fetching Reults...");
+        progressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressBar.setProgress(0);
+        progressBar.setMax(100);
+        progressBar.show();
+
         try {
             View view = getActivity().getCurrentFocus();
             if (view != null) {
@@ -179,10 +189,19 @@ public class Map extends Fragment implements OnMapReadyCallback {
                                     .add(new LatLng(dt[i].start_location.lat, dt[i].start_location.lng), new LatLng(dt[i].end_location.lat, dt[i].end_location.lng))
                                     .color(Color.BLUE));
                         }
+                        try {
+                            Thread.sleep(5000);
+                        }
+                        catch (Exception e){
+
+                        }
+                        progressBar.dismiss();
+
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressBar.dismiss();
 
                 VolleyError err=error;
 

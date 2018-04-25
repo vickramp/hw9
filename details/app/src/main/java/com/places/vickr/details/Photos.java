@@ -78,10 +78,14 @@ public class Photos extends Fragment {
 
         mGeoDataClient = Places.getGeoDataClient(getContext(), null);
         //remove ']' at the end of place id to get photos
-        getPhotos("ChIJ7aVxnOTHwoARxKIntFtakKo");
+       // getPhotos("ChIJ7aVxnOTHwoARxKIntFtakKo");
 
     }
-
+    @Override
+    public void onResume() {
+        getPhotos("ChIJ7aVxnOTHwoARxKIntFtakKo");
+        super.onResume();
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -113,6 +117,7 @@ public class Photos extends Fragment {
     }
 
     private void getPhotos(String placeid) {
+
         final String placeId = placeid;
         final Task<PlacePhotoMetadataResponse> photoMetadataResponse = mGeoDataClient.getPlacePhotos(placeId);
         photoMetadataResponse.addOnCompleteListener(new OnCompleteListener<PlacePhotoMetadataResponse>() {
