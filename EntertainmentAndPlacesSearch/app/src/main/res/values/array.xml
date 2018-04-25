@@ -33,4 +33,21 @@
 
     </string-array>
 
+    <string-array name="reviews_type">
+        <item>Google Reviews</item>
+        <item>Yelp Reviews</item>
+
+    </string-array>
+
+    <string-array name="reviews_order">
+        <item>Default Order</item>
+        <item>Highest Rating</item>
+        <item>Lowest Rating</item>
+        <item>Most Recent</item>
+        <item>Least Recent</item>
+
+    </string-array>
+
+
+
 </resources>

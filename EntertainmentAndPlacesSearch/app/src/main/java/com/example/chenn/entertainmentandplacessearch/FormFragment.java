@@ -33,6 +33,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -95,7 +98,6 @@ public class FormFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
     @Override
@@ -143,14 +145,86 @@ public class FormFragment extends Fragment {
                 }
 
                 System.out.println("Clicked Search Button" + val  +  "id "+ keyword + " " + category + " "+distance + " " + customloc);
-                //getDetails();
+                //getDetails();\
+                Double dist = 10*1609.0;
+                if(!distance.equals(""))
+                {
+                    dist = Integer.parseInt(distance)*1609.0;
+                }
+
                 if(!checkForErrors(keyword,customloc,val)) {
-                    getDetails();
+                    if(val==1) {
+                        Double lat = ((MainActivity) getActivity()).lat;
+                        Double lng = ((MainActivity) getActivity()).lng;
+                        getDetails(keyword, lat, lng, category, dist);
+                    }
+                    if(val==2){
+                        getGeoCodeandgoToDetails(keyword,category,dist,customloc);
+                    }
                 }
 
             }
         });
+        Button clearbtn = (Button) rootView.findViewById(R.id.button);
+        buttonOne.setOnClickListener(new Button.OnClickListener() {
+                public void onClick(View v) {
+
+
+            }
+        });
         return rootView;
+    }
+
+    public void getGeoCodeandgoToDetails(final String keyword, final String category,final Double dist,String customloc)
+    {
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
+
+        try {
+            customloc = URLEncoder.encode(customloc, "UTF-8");
+            System.out.println(customloc);
+        } catch (UnsupportedEncodingException e) {
+            System.out.println("Unsupported Exception");
+            e.printStackTrace();
+        }
+        String str = "address="+customloc;
+        String url = "http://chennavamshi-env.us-east-2.elasticbeanstalk.com/geocode?"+str;
+        System.out.println("Sending Request "+url );
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //System.out.println("response "+response);
+
+                        JsonElement jelement = new JsonParser().parse(response);
+                        // JsonElement d =  gson.toJsonTree(response);
+                        JsonObject job = jelement.getAsJsonObject();
+                        if(job.get("status").getAsString().equals("OK")) {
+                            JsonArray jarray = job.getAsJsonArray("results");
+                            String lat = jarray.get(0).getAsJsonObject().get("geometry").getAsJsonObject().get("location").getAsJsonObject().get("lat").getAsString();
+                            //  String lng = jarray.get(0).getAsJsonObject().get("location").getAsJsonObject().get("lng").getAsString();
+                            String lng = jarray.get(0).getAsJsonObject().get("geometry").getAsJsonObject().get("location").getAsJsonObject().get("lng").getAsString();
+                            System.out.println("Got co-ordinates " + lat + " and  " + lng);
+                            Double dlng = Double.parseDouble(lng);
+                            Double dlat = Double.parseDouble(lat);
+                            getDetails(keyword, dlat, dlng, category, dist);
+
+                        }
+                        else
+                        {
+                            System.out.println("Cannot Find the specififed location");
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println("Eroor " + error);
+                // mTextView.setText("That didn't work!");
+            }
+        });
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
+
     }
     private AdapterView.OnItemClickListener onItemClickListener =
             new AdapterView.OnItemClickListener(){
@@ -192,10 +266,8 @@ public class FormFragment extends Fragment {
         if(error)
         {
             Context context = getActivity().getApplicationContext();
-
             CharSequence text = "Please Fix All Fields With Errors";
             int duration = Toast.LENGTH_SHORT;
-
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
 
@@ -248,19 +320,29 @@ public class FormFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    public void getDetails()
+    public void getDetails(String keyword,Double lat,Double lng,String cat,Double distance)
     {
         RequestQueue queue = Volley.newRequestQueue(getActivity());
 
-        String url ="http://chennavamshi-env.us-east-2.elasticbeanstalk.com/nearbySearch?keyword=usc&lat=34.0266&long=-118.2831&category=default&distance=16094.300000000001";
-        System.out.println("Sending Request");
+        try {
+            keyword = URLEncoder.encode(keyword, "UTF-8");
+            System.out.println(keyword);
+        } catch (UnsupportedEncodingException e) {
+            System.out.println("Unsupported Exception");
+            e.printStackTrace();
+        }
+        //String url ="http://chennavamshi-env.us-east-2.elasticbeanstalk.com/nearbySearch?keyword=usc&lat=34.0266&long=-118.2831&category=default&distance=16094.300000000001";
+        String str = "keyword="+keyword+"&lat="+lat+"&long="+lng+"&category="+cat+"&distance="+distance;
+
+        String url = "http://chennavamshi-env.us-east-2.elasticbeanstalk.com/nearbySearch?"+str;
+        System.out.println("Sending Request "+url );
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
                         // mTextView.setText("Response is: "+ response.substring(0,500));
-                        System.out.println(response);
+                        //System.out.println(response);
                         Intent i = new Intent();
                         i.setClass(getActivity().getApplicationContext(), displayresultsAcitivity.class);
                         i.putExtra("EXTRA_SESSION_ID", response);

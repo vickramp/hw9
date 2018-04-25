@@ -1,7 +1,10 @@
 package com.example.chenn.entertainmentandplacessearch;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -23,6 +26,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class detailsofplaceAcitivity extends AppCompatActivity {
 
     /**
@@ -40,18 +54,37 @@ public class detailsofplaceAcitivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
     public boolean clicked = false;
-    public String name;
-    public String address;
+    public String name = "";
+    public String address = "";
+    public String id = "";
+    SharedPreferences sharedPref = null;
+    public String jsonobjstr = "";
+    public String placeId= "";
+    public String lat;
+    public String lng;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailsofplace_acitivity);
         String s = getIntent().getStringExtra("PLACE_NAME");
 
+        sharedPref =  PreferenceManager.getDefaultSharedPreferences(getApplicationContext());;
 
         name = s.substring(1,s.length()-1);
         s = getIntent().getStringExtra("PLACE_ADDRESS");
         address = s.substring(1,s.length()-1);
+        id = getIntent().getStringExtra("PLACE_ID");
+        jsonobjstr = getIntent().getStringExtra("PLACE_OBJ");
+        JsonElement je = new JsonParser().parse(jsonobjstr);
+        JsonObject job = je.getAsJsonObject();
+        //System.out.println("String s is "+s);
+        placeId = job.get("place_id").getAsString();
+        System.out.println("Place id is "+placeId);
+        lat = job.get("geometry").getAsJsonObject().get("location").getAsJsonObject().get("lat").getAsString();
+        lng = job.get("geometry").getAsJsonObject().get("location").getAsJsonObject().get("lng").getAsString();
+
+        System.out.println("Lat and long are "+lat + " "+lng);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -69,6 +102,29 @@ public class detailsofplaceAcitivity extends AppCompatActivity {
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+
+        String fstr = sharedPref.getString("favIDarr",null);
+
+        Gson gson = new Gson();
+
+
+        System.out.println("id is "+id);
+        if(fstr!=null) {
+            List<String> list;
+            list =  gson.fromJson(fstr, List.class);
+
+            System.out.println(Arrays.toString(list.toArray()));
+
+          //  System.out.println("value is " + Arrays.toString(set.toArray()));
+            //System.out.println(" id " + id);
+
+            if (list.contains(id)) {
+              //  System.out.println("Inside this beacuse it contained Id!! "+id);
+                ImageView favview = (ImageView) findViewById(R.id.placeFavicon);
+                clicked = true;
+                favview.setImageResource(R.drawable.favourites);
+            }
+        }
 
         addFavActionListener();
         addTwitterActionListener();
@@ -107,12 +163,12 @@ public class detailsofplaceAcitivity extends AppCompatActivity {
                 {
                     favview.setImageResource(R.drawable.favoutlinewhite);
                     text = name+ " was removed from favourites";
-
+                    removeFromFavourties(name,address);
                 }
                 else {
                     favview.setImageResource(R.drawable.favourites);
                     text = name + " was added to the favourites";
-
+                    addtoFavourites(name,address);
                 }
 
                 clicked = !clicked;
@@ -122,6 +178,54 @@ public class detailsofplaceAcitivity extends AppCompatActivity {
 
         });
 
+    }
+    public void addtoFavourites(String name, String add)
+    {
+        //SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+       // Set<String> set = sharedPref.getStringSet("favIDs",null);
+       // Set<String> currest;
+        String fstr = sharedPref.getString("favIDarr",null);
+        Gson gson = new Gson();
+        List<String> list;
+
+        if(fstr==null) {
+            list = new ArrayList<>();
+        }
+        else
+            list =  gson.fromJson(fstr, List.class);
+
+        //   System.out.println("Printing Array");
+        list.add(id);
+        String json = gson.toJson(list);
+        editor.putString("favIDarr", json);
+       editor.putString(id,jsonobjstr);
+
+        // editor.apply();
+        editor.commit();
+        System.out.println(Arrays.toString(list.toArray()));
+
+    }
+
+    public void removeFromFavourties(String name, String add)
+    {
+       // int i;
+        String key = id;
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        String fstr = sharedPref.getString("favIDarr",null);
+        List<String> list;
+        Gson gson = new Gson();
+
+        list =  gson.fromJson(fstr, List.class);
+
+        list.remove(key);
+        // set.add(obj.obj.getAsJsonObject().get("id").toString());
+        String json = gson.toJson(list);
+        editor.putString("favIDarr", json);
+        editor.remove(id);
+       // editor.apply();
+         editor.commit();
     }
 
     @Override
@@ -207,6 +311,43 @@ public class detailsofplaceAcitivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
+            if(position==0){
+                Bundle bundle = new Bundle();
+                bundle.putString("placeId", placeId);
+                InfoTab fragobj = new InfoTab();
+                fragobj.setArguments(bundle);
+                return fragobj;
+            }
+
+            if(position==1) {
+                Bundle bundle = new Bundle();
+                bundle.putString("placeId", placeId);
+                Photos fragobj = new Photos();
+                fragobj.setArguments(bundle);
+                return fragobj;
+            }
+            if(position==2)
+            {
+                Bundle bundle = new Bundle();
+                bundle.putString("placeId", placeId);
+                bundle.putDouble("lat",Double.parseDouble(lat));
+                bundle.putDouble("long",Double.parseDouble(lng));
+                bundle.putString("name",name);
+                Map fragobj = new Map();
+                fragobj.setArguments(bundle);
+                return fragobj;
+
+            }
+            if(position==3)
+            {
+                Bundle bundle = new Bundle();
+                bundle.putString("placeId", placeId);
+                bundle.putString("name",name);
+                ReviewsTab fragobj = new ReviewsTab();
+                fragobj.setArguments(bundle);
+                return fragobj;
+
+            }
             return PlaceholderFragment.newInstance(position + 1);
         }
 

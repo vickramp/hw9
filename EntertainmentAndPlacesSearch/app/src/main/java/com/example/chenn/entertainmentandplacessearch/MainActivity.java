@@ -1,5 +1,7 @@
 package com.example.chenn.entertainmentandplacessearch;
 
+import android.content.Intent;
+import android.location.Location;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -22,6 +24,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -37,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
+    private String response;
+    public double lat;
+    public double lng;
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -63,7 +80,19 @@ public class MainActivity extends AppCompatActivity {
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+       // getDataAndgoToFavourites();
 
+        MyLocation.LocationResult locationResult = new MyLocation.LocationResult(){
+            @Override
+            public void gotLocation(Location location){
+                //Got the location!
+                lat = location.getLatitude();
+                lng = location.getLongitude();
+               System.out.println("Got Location Result lat is "+location.getLatitude() + " long is "+location.getLongitude());
+            }
+        };
+        MyLocation myLocation = new MyLocation();
+        myLocation.getLocation(this, locationResult);
 
 
     }
@@ -155,7 +184,19 @@ public class MainActivity extends AppCompatActivity {
 
             if(position==0)
             {
+                System.out.println("Checking for position");
                 return new FormFragment();
+            }
+            if(position==1)
+            {
+                System.out.println("Here");
+                Bundle bundle = new Bundle();
+                bundle.putString("data",response);
+// set Fragmentclass Arguments
+                displayFavourites fragobj = new displayFavourites();
+                fragobj.setArguments(bundle);
+
+                return fragobj;
             }
 
             return PlaceholderFragment.newInstance(position + 1);
@@ -164,10 +205,51 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 2;
         }
     }
 
+    public void getDataAndgoToFavourites()
+    {
+        RequestQueue queue = Volley.newRequestQueue(this);
 
+        String url ="http://chennavamshi-env.us-east-2.elasticbeanstalk.com/nearbySearch?keyword=usc&lat=34.0266&long=-118.2831&category=default&distance=16094.300000000001";
+        System.out.println("Sending Request");
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String rr) {
+                        // Display the first 500 characters of the response string.
+                        // mTextView.setText("Response is: "+ response.substring(0,500));
+                        //System.out.println(response);
+                        System.out.println("Got Results data");
+                        response = rr;
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println("Eroor " + error);
+                // mTextView.setText("That didn't work!");
+            }
+        });
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
+
+    public void goTodetailsPlaceActivity(String name,String address,String id,String data)
+    {
+        Intent i = new Intent();
+        //System.out.println("Values are "+name + " add "+ address + " ")
+        i.putExtra("PLACE_NAME", name);
+        i.putExtra("PLACE_ADDRESS",address);
+        i.putExtra("PLACE_ID",id);
+        i.putExtra("PLACE_OBJ",data);
+        i.setClass(this, detailsofplaceAcitivity.class);
+        startActivity(i);
+
+
+    }
 
 }

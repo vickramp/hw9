@@ -9,4 +9,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_detailsofplace_acitivity">detailsofplaceAcitivity</string>
+    <string-array name="modes">
+        <item>Driving</item>
+        <item>Walking</item>
+        <item>Bycycling</item>
+        <item>Transit</item>
+    </string-array>
+
 </resources>

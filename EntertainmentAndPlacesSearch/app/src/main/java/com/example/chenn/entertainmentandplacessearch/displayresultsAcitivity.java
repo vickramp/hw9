@@ -1,7 +1,10 @@
 package com.example.chenn.entertainmentandplacessearch;
 
 import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +30,11 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -41,6 +49,8 @@ public class displayresultsAcitivity extends AppCompatActivity {
     DetailsObject[] dobjpage1 = null;
     DetailsObject[] dobjpage2 = null;
     DetailsObject[] dobjpage3 = null;
+    SharedPreferences sharedPref = null;
+
 
     int currentPage = 0;
     @Override
@@ -48,11 +58,12 @@ public class displayresultsAcitivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        sharedPref =  PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         setContentView(R.layout.activity_displayresults_acitivity);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         String s = getIntent().getStringExtra("EXTRA_SESSION_ID");
     // dobj = createDetailsObject(s);
+
         currentPage = 1;
       //  mAdapter = new populateSearchAdapter(dobj,this );
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -63,6 +74,7 @@ public class displayresultsAcitivity extends AppCompatActivity {
         getAllData(s);
     }
 
+
     public void getAllData(String response)
     {
         Button next = (Button) findViewById(R.id.nextbtn);
@@ -72,7 +84,7 @@ public class displayresultsAcitivity extends AppCompatActivity {
 
         DetailsObject[] currdob = createDetailsObject(response,1);
         dobjpage1 = currdob;
-        mAdapterPage1 = new populateSearchAdapter(currdob,this );
+        mAdapterPage1 = new populateSearchAdapter(currdob,this,sharedPref );
         recyclerView.setAdapter(mAdapterPage1);
         if(nextPagetoken1!=null) {
             final String nextPageToken = nextPagetoken1;
@@ -82,11 +94,24 @@ public class displayresultsAcitivity extends AppCompatActivity {
                 public void run() {
                     getNextPageTokenData(nextPageToken);
                 }
-            }, 3, TimeUnit.SECONDS);
+            }, 2, TimeUnit.SECONDS);
 
         }
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        System.out.println("On Resume!!!!!!");
+        if(currentPage==1)
+        {
+            recyclerView.setAdapter(mAdapterPage1);
+        }
+        if(currentPage==2)
+            recyclerView.setAdapter(mAdapterPage2);
+        if(currentPage==3)
+            recyclerView.setAdapter(mAdapterPage3);
 
+    }
 
     public void setAdapter()
     {
@@ -116,7 +141,7 @@ public class displayresultsAcitivity extends AppCompatActivity {
             currdob = dobjpage2;
             if(mAdapterPage2==null)
             {
-                mAdapterPage2 = new populateSearchAdapter(currdob,this );
+                mAdapterPage2 = new populateSearchAdapter(currdob,this,sharedPref);
             }
             myadap = mAdapterPage2;
             if(dobjpage3!=null)
@@ -145,7 +170,7 @@ public class displayresultsAcitivity extends AppCompatActivity {
             currdob = dobjpage3;
             if(mAdapterPage3==null)
             {
-                mAdapterPage3 = new populateSearchAdapter(currdob,this );
+                mAdapterPage3 = new populateSearchAdapter(currdob,this,sharedPref );
             }
             myadap = mAdapterPage3;
             prev.setEnabled(true);
@@ -191,8 +216,10 @@ public class displayresultsAcitivity extends AppCompatActivity {
             myDataset[i].obj = tmp;
             myDataset[i].add = tmp.get("vicinity").toString();
             myDataset[i].iconurl = tmp.get("icon").toString();
-            System.out.println("name is "+name);
-            System.out.println("address is " + tmp.get("vicinity").toString());
+
+
+            //System.out.println("name is "+name);
+            //System.out.println("address is " + tmp.get("vicinity").toString());
         }
         if(jelement.getAsJsonObject().get("next_page_token")!=null) {
             if(pg==1)
@@ -235,7 +262,7 @@ public class displayresultsAcitivity extends AppCompatActivity {
                                 public void run() {
                                     getNextPageTokenData2(nextPageToken);
                                 }
-                            }, 3, TimeUnit.SECONDS);
+                            }, 2, TimeUnit.SECONDS);
 
                         }
 
@@ -281,32 +308,131 @@ public class displayresultsAcitivity extends AppCompatActivity {
 
     }
 
+    public void addtoFavourites(String name, String add)
+    {
+        //SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        String fstr = sharedPref.getString("favIDarr",null);
+        Gson gson = new Gson();
+
+        List<String> list;
+
+        List<String> currest;
+        if(fstr==null) {
+            list = new ArrayList<>();
+        }
+        else
+            list =  gson.fromJson(fstr, List.class);
+
+        //   System.out.println("Printing Array");
+        DetailsObject[] obj = getCurrentDetailsObj();
+        int i;
+        //System.out.println("Values are "+name + " and "+add);
+        for(i=0;i<obj.length;i++)
+        {
+            String currname = obj[i].name;
+            currname = currname.substring(1,currname.length()-1);
+            String curradd = obj[i].add;
+            curradd = curradd.substring(1,curradd.length()-1);
+          //  System.out.println("Checking for "+currname +" " +curradd);
+            if(currname.equals(name) && curradd.equals(add)) {
+                break;
+            }
+        }
+        list.add(obj[i].obj.getAsJsonObject().get("id").getAsString());
+        String json = gson.toJson(list);
+
+        editor.putString("favIDarr", json);
+
+        editor.putString(obj[i].obj.getAsJsonObject().get("id").getAsString(),obj[i].obj.toString());
+       //editor.apply();
+        editor.commit();
+        System.out.println(Arrays.toString(list.toArray()));
+
+    }
+
+    public void removeFromFavourties(String name, String add)
+    {
+        DetailsObject[] obj = getCurrentDetailsObj();
+        int i;
+        for(i=0;i<obj.length;i++)
+        {
+            String currname = obj[i].name;
+            currname = currname.substring(1,currname.length()-1);
+            String curradd = obj[i].add;
+            curradd = curradd.substring(1,curradd.length()-1);
+            if(currname.equals(name) && curradd.equals(add)) {
+                break;
+            }
+        }
+        String key = obj[i].obj.getAsJsonObject().get("id").getAsString();
+        SharedPreferences.Editor editor = sharedPref.edit();
+        String fstr = sharedPref.getString("favIDarr",null);
+
+        Gson gson = new Gson();
+
+        List<String> list;
+         list =  gson.fromJson(fstr, List.class);
+        list.remove(key);
+       // set.add(obj.obj.getAsJsonObject().get("id").toString());
+        String json = gson.toJson(list);
+        editor.putString("favIDarr", json);
+        editor.remove(key);
+       // editor.apply();
+        editor.commit();
+    }
+
+    public DetailsObject[] getCurrentDetailsObj()
+    {
+        if(currentPage==1)
+        {
+            return dobjpage1;
+        }
+        if(currentPage==2)
+        {
+            return dobjpage2;
+        }
+
+        if(currentPage==3)
+        {
+            return dobjpage3;
+        }
+    return null;
+    }
 
     public void myFunc(int item)
     {
         Intent i = new Intent();
-
+        String id = "";
         String name="",address="";
+        DetailsObject dd = null;
         if(currentPage==1)
         {
            name =  dobjpage1[item].name;
            address = dobjpage1[item].add;
+           id = dobjpage1[item].obj.getAsJsonObject().get("id").getAsString();
+           dd = dobjpage1[item];
         }
         if(currentPage==2)
         {
                 name =  dobjpage2[item].name;
                 address = dobjpage2[item].add;
-
+            id = dobjpage2[item].obj.getAsJsonObject().get("id").getAsString();
+            dd = dobjpage2[item];
         }
 
         if(currentPage==3)
         {
             name =  dobjpage3[item].name;
             address = dobjpage3[item].add;
+            id = dobjpage3[item].obj.getAsJsonObject().get("id").getAsString();
+            dd = dobjpage3[item];
 
         }
             i.putExtra("PLACE_NAME", name);
         i.putExtra("PLACE_ADDRESS",address);
+        i.putExtra("PLACE_ID",id);
+        i.putExtra("PLACE_OBJ",dd.obj.toString());
         i.setClass(this, detailsofplaceAcitivity.class);
       //  i.putExtra("EXTRA_SESSION_ID", response);
 

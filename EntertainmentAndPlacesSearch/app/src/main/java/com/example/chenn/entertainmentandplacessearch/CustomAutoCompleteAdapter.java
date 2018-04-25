@@ -32,7 +32,7 @@ public class CustomAutoCompleteAdapter extends ArrayAdapter {
     private CustomAutoCompleteAdapter.CustomAutoCompleteFilter listFilter =
             new CustomAutoCompleteAdapter.CustomAutoCompleteFilter();
 
-    //private TextView country;
+    // private TextView country;
    // private Spinner placeType;
    // private int[] placeTypeValues;
 

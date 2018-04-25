@@ -3,6 +3,8 @@
     package="com.example.chenn.entertainmentandplacessearch">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +15,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDPQaozTgkjBi8_5rM2MHPHALa9ip4IG_4" />
+            android:value="AIzaSyDS-aqm04-v8E3_N5DdFl7Kk57D7EPx_uU"/>
 
         <activity
             android:name=".MainActivity"
