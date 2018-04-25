@@ -56,7 +56,16 @@ public class displayFavourites extends Fragment {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
 
         String fstr = sharedPref.getString("favIDarr",null);
+        if(fstr==null)
+        {
+         fstr = "[]";
+            SharedPreferences.Editor editor = sharedPref.edit();
 
+            editor.putString("favIDarr", fstr);
+            editor.commit();
+
+
+        }
         Gson gson = new Gson();
 
         List<String> list;

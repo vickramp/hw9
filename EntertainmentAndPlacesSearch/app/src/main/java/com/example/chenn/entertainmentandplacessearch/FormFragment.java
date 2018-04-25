@@ -1,6 +1,7 @@
 
 package com.example.chenn.entertainmentandplacessearch;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -56,6 +57,8 @@ public class FormFragment extends Fragment {
     private String mParam2;
     EditText keyword1 = null;
     EditText distance1 = null;
+    private ProgressDialog progressBar;
+
     //EditText customloctext1 = null;
     Spinner category1 = null;
     TextView keywordError = null;
@@ -153,6 +156,14 @@ public class FormFragment extends Fragment {
                 }
 
                 if(!checkForErrors(keyword,customloc,val)) {
+
+                    progressBar = new ProgressDialog(getContext());
+                    progressBar.setCancelable(true);
+                    progressBar.setMessage("Fetching results");
+                    progressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                    progressBar.setProgress(0);
+                    progressBar.setMax(100);
+                    progressBar.show();
                     if(val==1) {
                         Double lat = ((MainActivity) getActivity()).lat;
                         Double lng = ((MainActivity) getActivity()).lng;
@@ -165,8 +176,8 @@ public class FormFragment extends Fragment {
 
             }
         });
-        Button clearbtn = (Button) rootView.findViewById(R.id.button);
-        buttonOne.setOnClickListener(new Button.OnClickListener() {
+        Button clearbtn = (Button) rootView.findViewById(R.id.button2);
+        clearbtn.setOnClickListener(new Button.OnClickListener() {
                 public void onClick(View v) {
 
 
@@ -322,6 +333,7 @@ public class FormFragment extends Fragment {
 
     public void getDetails(String keyword,Double lat,Double lng,String cat,Double distance)
     {
+
         RequestQueue queue = Volley.newRequestQueue(getActivity());
 
         try {
@@ -340,6 +352,8 @@ public class FormFragment extends Fragment {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        progressBar.dismiss();
+
                         // Display the first 500 characters of the response string.
                         // mTextView.setText("Response is: "+ response.substring(0,500));
                         //System.out.println(response);
@@ -353,6 +367,8 @@ public class FormFragment extends Fragment {
             public void onErrorResponse(VolleyError error) {
                 System.out.println("Eroor " + error);
                 // mTextView.setText("That didn't work!");
+                progressBar.dismiss();
+
             }
         });
 
