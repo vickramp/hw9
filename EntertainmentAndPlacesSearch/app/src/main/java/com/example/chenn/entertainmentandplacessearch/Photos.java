@@ -1,5 +1,6 @@
 package com.example.chenn.entertainmentandplacessearch;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -43,7 +44,7 @@ public class Photos extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private int cnt;
     private OnFragmentInteractionListener mListener;
 
     public Photos() {
@@ -120,6 +121,14 @@ public class Photos extends Fragment {
     }
 
     private void getPhotos(String placeid) {
+        final ProgressDialog progressBar;
+        progressBar = new ProgressDialog(getContext());
+        progressBar.setCancelable(false);
+        progressBar.setMessage("Fetching results");
+        progressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressBar.setProgress(0);
+        progressBar.setMax(100);
+        progressBar.show();
         final String placeId = placeid;
         final Task<PlacePhotoMetadataResponse> photoMetadataResponse = mGeoDataClient.getPlacePhotos(placeId);
         photoMetadataResponse.addOnCompleteListener(new OnCompleteListener<PlacePhotoMetadataResponse>() {
@@ -133,6 +142,7 @@ public class Photos extends Fragment {
                 boolean pics=true;
                 for(PlacePhotoMetadata photoMetadata : photoMetadataBuffer){
                     pics=false;
+                    cnt++;
                     Task<PlacePhotoResponse> photoResponse = mGeoDataClient.getPhoto(photoMetadata);
 
                     photoResponse.addOnCompleteListener(new OnCompleteListener<PlacePhotoResponse>() {
@@ -153,6 +163,8 @@ public class Photos extends Fragment {
                             lp.setMargins(45, 40, 45, 0);
                             image.setLayoutParams(lp);
                             linearLayout1.addView(image);
+                            if(--cnt==0)
+                                progressBar.dismiss();
                         }
                     });
                 }
@@ -166,6 +178,7 @@ public class Photos extends Fragment {
                     textView.setLayoutParams(lp);
                     LinearLayout linearLayout1 = (LinearLayout) getActivity().findViewById(R.id.linearLayout1);
                     linearLayout1.addView(textView);
+                    progressBar.dismiss();
                 }
             }
         });
