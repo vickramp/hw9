@@ -124,7 +124,7 @@ public class Photos extends Fragment {
         final ProgressDialog progressBar;
         progressBar = new ProgressDialog(getContext());
         progressBar.setCancelable(false);
-        progressBar.setMessage("Fetching results");
+        progressBar.setMessage("Fetching photos");
         progressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressBar.setProgress(0);
         progressBar.setMax(100);
