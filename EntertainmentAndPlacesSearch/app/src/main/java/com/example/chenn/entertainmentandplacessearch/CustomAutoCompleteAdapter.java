@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.Spinner;
+
 import android.widget.TextView;
 
 import com.google.android.gms.location.places.AutocompleteFilter;
