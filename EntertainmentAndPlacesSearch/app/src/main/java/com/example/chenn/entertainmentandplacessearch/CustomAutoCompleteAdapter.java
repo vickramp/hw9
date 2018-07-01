@@ -12,7 +12,7 @@ import android.widget.Filter;
 import android.widget.Spinner;
 
 import android.widget.TextView;
-
+ hi all
 import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.AutocompletePrediction;
 import com.google.android.gms.location.places.AutocompletePredictionBufferResponse;
